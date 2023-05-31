@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head> 
+<style>
+    h1 {
+        font-family: verdana;
+        font-size: 50px;
+        border-style:solid;
+        text-align: center;
+    }
+    input{
+        width: 400px;
+        height: 100px;
+    }
+    p1{
+        font-size: 25px;
+    }
+    .btn {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80px;
+        padding: 10px;
+        text-align: center;
+        font-size: 15px;
+        display: inline-block;
+      } 
+      .calculator {
+  background-image: url('https://images.unsplash.com/photo-1625225233840-695456021cde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FsY3VsYXRvcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80');
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+}
+</style> 
+ 
+<body> 
+<div class="calculator" style="text-align:center">    
+<h1>SCIENTIFIC CALCULATOR</h1>
+<!-- <p1><input id="first" ></p1><br> -->
+<p1><input disabled id="second" ></p1><br>
+<button class="btn" onclick="sin()">SIN</button>
+<button class="btn" onclick="cos()">COS</button>
+<button class="btn" onclick="tan()">TAN</button>
+<button class="btn" onclick="sec()">SEC</button>
+<button class="btn" onclick="cosec()">COSEC</button><br>
+<button class="btn" onclick="c()">C</button>
+<button class="btn" onclick="ln()">Ln</button>
+<button class="btn" onclick="log()">LOG</button>
+<button class="btn" onclick="equal()">=</button>
+<button class="btn" onclick="backspace()">Backspace</button><br>
+<button class="btn" onclick="exp1()">^</button>
+<button class="btn" onclick="Value('7')">7</button>
+<button class="btn" onclick="Value('8')">8</button>
+<button class="btn" onclick="Value('9')">9</button>
+<button class="btn" onclick="exp()">e</button><br>
+<button class="btn" onclick="append('/')">/</button>
+<button class="btn" onclick="Value('4')">4</button>
+<button class="btn" onclick="Value('5')">5</button>
+<button class="btn" onclick="Value('6')">6</button>
+<button class="btn" onclick="append('-')">-</button><br>
+<button class="btn" onclick="append('*')">*</button>
+<button class="btn" onclick="Value('1')">1</button>
+<button class="btn" onclick="Value('2')">2</button>
+<button class="btn" onclick="Value('3')">3</button>
+<button class="btn" onclick="append('+')">+</button><Br>
+<button class="btn" onclick="cot()">COT</button>
+<button class="btn" onclick="arcsin()">SIN<sup>-1</sup></button>
+<button class="btn" onclick="Value('0')">0</button>
+<button class="btn" onclick="arccos()">COS<sup>-1</sup></button>
+<button class="btn" onclick="arctan()">TAN<sup>-1</sup></button><br>
+<button class="btn" onclick="append('(')">(</button>
+<button class="btn" onclick="append(')')">)</button>
+</div>
+<script>
+  let input2="";
+  function exp1()
+  {
+      document.getElementById("second").value +='^';
+      input2 +='**';
+  }
+    function backspace()
+    {
+      
+        var input =(document.getElementById("second").value);
+        
+        if(input.slice(-7,)=='arcsin('||input.slice(-7,)=='arccos('||input.slice(-7,)=='arctan(')
+        {
+          var result=input.slice(0,-7);
+          var result1=input2.slice(0,-10);
+        }
+        
+        
+        else if(input.slice(-4,)=='sec('||input.slice(-4,)=='cot(')
+        {
+          var result=input.slice(0,-4);
+          var result1=input2.slice(0,-11);
+        }
+        else if(input.slice(-4,)=='log(')
+        {
+          var result=input.slice(0,-4);
+          var result1=input2.slice(0,-11);
+        }
+        else if(input.slice(-4,)=='sin('||input.slice(-4,)=='cos('||input.slice(-4,)=='tan(')
+        {
+          
+          var result=input.slice(0,-4);
+          var result1=input2.slice(0,-9);
+
+        }
+    
+        else if(input.slice(-6,)=='cosec(')
+        {
+          var result=input.slice(0,-6);
+          var result1=input2.slice(0,-11);
+        }
+        else if(input.slice(-3,)=='ln(')
+        {
+          var result=input.slice(0,-3);
+          var result1=input2.slice(0,-8);
+        }
+        else if(input.slice(-1,)=='e')
+        {
+          var result=input.slice(0,-2);
+          var result1=input2.slice(0,-6);
+        }
+        else
+        {
+        result=input.slice(0,-1);
+        result1=input2.slice(0,-1);
+        }
+
+
+        document.getElementById("second").value = result;
+        
+
+    }
+    function ln()
+    {
+  
+        input2+='Math.log(';
+        document.getElementById("second").value += 'ln(';
+    }
+    function log()
+    {
+      input2+='Math.log10(';
+        document.getElementById("second").value = 'log(';
+    }
+    function exp()
+    {
+        input2+='Math.E';
+        document.getElementById("second").value +='e';
+    }
+    
+    function sin()
+{
+  input2+= 'Math.sin(';
+  document.getElementById("second").value+= 'sin(';
+}
+function arcsin()
+{
+  input2+= 'Math.asin(';
+  document.getElementById("second").value+= 'arcsin(';
+
+
+}
+function cos()
+{
+  input2+= 'Math.cos(';
+  document.getElementById("second").value+= 'cos(';
+
+}
+function arccos()
+{
+  input2+= 'Math.acos(';
+  document.getElementById("second").value+= 'arccos(';
+
+}
+function tan()
+{
+  input2+= 'Math.tan(';
+  document.getElementById("second").value+= 'tan(';
+
+}
+function arctan()
+{
+  input2+= 'Math.atan(';
+  document.getElementById("second").value+= 'arctan(';
+
+}
+function sec()
+{
+  input2+= '1/Math.cos(';
+  document.getElementById("second").value+= 'sec(';
+
+}
+function cosec()
+{
+  input2+= '1/Math.sin(';
+  document.getElementById("second").value+= 'cosec(';
+}
+function cot()
+{
+  input2+= '1/Math.tan(';
+  document.getElementById("second").value+= 'cot(';
+
+}
+function Value(value) {
+  input2+= value;
+      document.getElementById("second").value +=value;
+    }
+    
+    function append(operator) {
+      input2 += operator;
+      document.getElementById("second").value += operator;
+    }
+    function equal() {
+      
+      document.getElementById("second").value='Math Error'
+      var result = eval(input2);
+        document.getElementById("second").value = result;
+        if(isNaN(result)||!isFinite(result))
+        document.getElementById("second").value='Math Error'
+      }
+      // input2='';
+    
+    
+
+
+function c() {
+  input2='';
+      document.getElementById("second").value = "";
+      
+
+    }
+
+   
+</script>
+</body>
+</html>
